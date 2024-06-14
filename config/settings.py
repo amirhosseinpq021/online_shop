@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     # new
     'accounts',
+    'pages',
 ]
 
 MIDDLEWARE = [
