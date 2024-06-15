@@ -14,8 +14,9 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields['username'].help_text = None
 
 
-
 class CustomUserChangeForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ('email', 'username',)
+
+

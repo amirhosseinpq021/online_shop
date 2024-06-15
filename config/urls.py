@@ -22,7 +22,6 @@ urlpatterns = [
     path('', include('pages.urls')),
 
     # authentication users
-    path('accounts/', include('django.contrib.auth.urls')),  # login and logout users
-    path('accounts/', include('accounts.urls')),  # login and logout users
+    path('accounts/', include('allauth.urls')),
 
 ]
