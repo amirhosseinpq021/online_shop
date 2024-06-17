@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block title %}products page{% endblock %}</title>
+
+{% block content %}
+
+    {% for product in products %}
+        <p>{{ product.cover.url }}</p>
+        <a href="{{ product.get_absolute_url}}">{{ product.title }}</a>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+        <p>{{ product.active }}</p>
+        <p>{{ product.is_featured }}</p>
+        <p>{{ product.is_sale }}</p>
+
+    {% endfor %}
+
+
+{% endblock %}

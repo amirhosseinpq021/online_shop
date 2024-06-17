@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}detail page{% endblock %}</title>
+
+{% block content %}
+        {{ product_detail.cover.url }}
+        <p>{{ product_detail.title }}</p>
+        <p>{{ product_detail.description }}</p>
+        <p>{{ product_detail.price }}</p>
+        <p>{{ product_detail.active }}</p>
+        <p>{{ product_detail.is_featured }}</p>
+        <p>{{ product_detail.is_sale }}</p>
+
+
+
+{% endblock %}
