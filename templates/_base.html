@@ -15,6 +15,22 @@
 </head>
 <body>
 
+ {% if user.is_authenticated %}
+
+        <h3>{{ user.username }}سلام </h3>
+        <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary">خروج</button>
+        </form>
+
+    {% else %}
+        <button type="button" class="btn btn-outline-warning"><a href="{% url 'account_login' %}">ورود</button></a>
+
+        <button type="button" class="btn btn-outline-warning"><a href="{% url 'account_signup' %}"> ثبت نام</button></a>
+
+
+    {% endif %}
+
 {% block content %}
 
 {% endblock %}
