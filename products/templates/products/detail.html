@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
-
+{% load static %}
+{% load crispy_forms_tags %}
 {% block title %}detail page{% endblock %}
 
 {% block content %}
@@ -40,7 +41,7 @@
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
 
-                                    {% if product_detail.discount > 1  %}
+                                    {% if product_detail.discount > 1 %}
                                         <span class="money text-success">{{ product_detail.sell_price| floatformat:"0" }}</span>
                                         <span class="price-separator">-</span>
                                         <span class="money old-price text-danger">{{ product_detail.price| floatformat:"0" }}</span>
@@ -88,7 +89,7 @@
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab"
                                        data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>نظرات (۱)</span>
+                                        <span>نظرات </span>
                                     </a>
                                 </div>
                                 <div class="tab-content product-data-tab__content" id="product-tabContent">
@@ -127,36 +128,39 @@
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">۱ نظر برای لباس تابستانی</h3>
+                                            <h3 class="review__title">{{ product_detail.comments.count }} نظر
+                                                برای {{ product_detail.title }} </h3>
                                             <ul class="review__list">
-                                                <li class="review__item">
-                                                    <div class="review__container">
-                                                        <div class="review__text">
-                                                            <div class="d-flex flex-sm-row flex-row">
-                                                                <img src="assets/img/others/comment-1.jpg"
-                                                                     alt="Review Avatar" class="review__avatar">
-                                                                <div>
-                                                                    <div class="review__meta">
-                                                                        <strong class="review__author px-4">علی
-                                                                            علوی</strong>
-                                                                        <span class="review__dash">-</span>
-                                                                        <span class="review__published-date">۱۲ مرداد ۱۴۰۱</span>
-                                                                    </div>
-                                                                    <div class="product-rating">
-                                                                        <div class="m-0 star-rating star-five">
-                                                                            <span>Rated <strong
-                                                                                    class="rating">5.00</strong> out of 5</span>
+                                                {% for comment in product_detail.comments.all %}
+
+                                                    <li class="review__item">
+                                                        <div class="review__container">
+                                                            <div class="review__text">
+                                                                <div class="d-flex flex-sm-row flex-row">
+                                                                    {#                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}"#}
+                                                                    {#                                                                     alt="Review Avatar" class="review__avatar">#}
+                                                                    <div>
+                                                                        <div class="review__meta">
+                                                                            <span class="review__published-date">{{ comment.created_at | timesince }}پیش </span>
+                                                                            <span class="review__dash">-</span>
+                                                                            <strong class="review__author px-4">{{ comment.user.username }}</strong>
+                                                                        </div>
+                                                                        <div class="product-rating">
+                                                                            {#                                                                        <div class="m-0 star-rating star-five">#}
+                                                                            {#                                                                            <span>Rated <strong#}
+                                                                            {#                                                                                    class="rating">{{ comment.stars }}</strong> out of 5</span>#}
+                                                                            {#                                                                        </div>#}
+                                                                            <h3>{{ comment.stars }}</h3>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <p class="review__description text-right px-4">
+                                                                    {{ comment.text | linebreaksbr }}
+                                                                </p>
                                                             </div>
-                                                            <p class="review__description text-right px-4">
-                                                                از خرید خودم راضی هستم. واقعا خیلی خوب بسته بندی شده بود
-                                                                و همینطور سر زمان رسید. واقعا نسبت به قیمت خیلی می ارزه.
-                                                            </p>
                                                         </div>
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                {% endfor %}
                                             </ul>
                                             <div class="review-form-wrapper">
                                                 <div class="row">
@@ -164,29 +168,9 @@
                                                     <div class="col-lg-8 m-auto">
                                                         <span class="reply-title pull-right">نظر خود را بنویسید</span>
                                                         <br>
-                                                        <form action="#" class="form text-right">
-                                                            <div class="form-notes mb--20">
-                                                                <p class="my-3"><span class="required">*</span>ایمیل شما
-                                                                    برای دیگران نشان داده نمیشود.</p>
-                                                            </div>
-                                                            <div class="form__group mb--10">
-                                                                <label class="form__label d-block" for="email">متن نظر
-                                                                    شما<span class="required">*</span></label>
-                                                                <textarea name="review" id="review"
-                                                                          class="form__input form__input--textarea"></textarea>
-                                                            </div>
-                                                            <div class="form__group mb--20">
-                                                                <label class="form__label d-block" for="name">نام
-                                                                    شما<span class="required">*</span></label>
-                                                                <input type="text" name="name" id="name"
-                                                                       class="form__input">
-                                                            </div>
-                                                            <div class="form__group mb--20">
-                                                                <label class="form__label d-block" for="email">ایمیل شما<span
-                                                                        class="required">*</span></label>
-                                                                <input type="email" name="email" id="email"
-                                                                       class="form__input">
-                                                            </div>
+                                                        <form action="{% url 'comment_create' product_detail.pk %}" class="form text-right" method="post">
+                                                            {% csrf_token %}
+                                                           {{ comment_form | crispy }}
                                                             <div class="form__group">
                                                                 <div class="form-row">
                                                                     <div class="col-12">
