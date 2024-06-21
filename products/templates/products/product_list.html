@@ -57,14 +57,15 @@
                                                                 <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
                                                             </h3>
                                                             <div class="product-price-wrapper mb--30">
-                                                                {% if product.is_sale %}
-                                                                <span class="money text-success"> {{ product.price }}</span>
+
+                                                                {% if product.discounted_price > 1 %}
+                                                                <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
                                                                 <span class="money-separator">-</span>
                                                                 <span class="old-price text-danger">
-                                                                <span class="money text-danger">۸۰,۰۰۰ تومان</span>
+                                                                <span class="money text-danger">{{ product.price }}</span>
                                                             </span>
                                                                 {% else %}
-                                                                <span class="money text-success"> {{ product.price }}</span>
+                                                                <span class="money text-success"> {{ product.price }}تومان</span>
                                                                 {% endif %}
 
                                                             </div>

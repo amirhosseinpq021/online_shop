@@ -1,6 +1,6 @@
 {% extends '_base.html' %}
 
-{% block title %}detail page{% endblock %}</title>
+{% block title %}detail page{% endblock %}
 
 {% block content %}
 
@@ -28,7 +28,7 @@
                     <div class="row no-gutters mb--80">
                         <div class="col-12 col-sm-4 product-main-image d-flex align-content-center">
                             <img class="m-auto" style="max-height: 400px;" src="{{ product_detail.cover.url }}" alt="">
-                            {% if product_detail.is_sale %}
+                            {% if product_detail.discount > 1 %}
                                 <span class="product-badge">تخفیف ویژه</span>
                             {% endif %}
                         </div>
@@ -39,15 +39,18 @@
                                     {{ product_detail.description | linebreaksbr }}
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
-                                    {% if product_detail.is_sale %}
-                                        <span class="money text-success">{{ product_detail.price }}</span>
+
+                                    {% if product_detail.discount > 1  %}
+                                        <span class="money text-success">{{ product_detail.sell_price| floatformat:"0" }}</span>
                                         <span class="price-separator">-</span>
-                                        <span class="money old-price text-danger">۲۱۰,۰۰۰ تومان</span>
+                                        <span class="money old-price text-danger">{{ product_detail.price| floatformat:"0" }}</span>
                                     {% else %}
                                         <span class="money text-success">{{ product_detail.price }}</span>
                                     {% endif %}
 
                                 </div>
+
+
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
                                     <div class="quantity-wrapper d-flex justify-content-start">
                                         <div class="quantity">
