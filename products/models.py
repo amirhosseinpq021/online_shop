@@ -3,6 +3,11 @@ from django.db import models
 from django.shortcuts import reverse
 
 
+class ActiveProductManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(active=True)
+
+
 class Product(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -17,6 +22,9 @@ class Product(models.Model):
     discount = models.PositiveIntegerField()
     discounted_price = models.PositiveIntegerField(null=True)
     sell_price = models.PositiveIntegerField(null=True)
+
+    objects = models.Manager()
+    active_objects = ActiveProductManager()
 
     def __str__(self):
         return self.title
