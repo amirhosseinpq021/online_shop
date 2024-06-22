@@ -33,6 +33,11 @@ class Product(models.Model):
         return (self.price) - (self.discounted_price)
 
 
+class ActivCommentManager(models.Manager):
+    def get_queryset(self):
+        return super(ActivCommentManager, self).get_queryset().filter(is_active=True)
+
+
 class Comment(models.Model):
     PRODUCT_STARS = [
         ('خیلی بد بود', 'خیلی بد بود'),
@@ -52,8 +57,15 @@ class Comment(models.Model):
     stars = models.CharField(max_length=100, choices=PRODUCT_STARS, blank=True)
     recommend = models.CharField(max_length=100, choices=RECOMMEND, blank=True)
 
+    objects = models.Manager()
+    active_comments_manager = ActivCommentManager()
+
     def __str__(self):
         return self.text
 
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.product.id])
+
+
+
+

@@ -140,26 +140,11 @@
 
 
 
-<!-- Header End -->
-{#{% if user.is_authenticated %}#}
-{##}
-{#    <h3>{{ user.username }}سلام </h3>#}
-{#    <form action="{% url 'account_logout' %}" method="post">#}
-{#        {% csrf_token %}#}
-{#        <button type="submit" class="btn btn-outline-primary">خروج</button>#}
-{#    </form>#}
-{##}
-{#{% else %}#}
-{#    <button type="button" class="btn btn-outline-warning"><a href="{% url 'account_login' %}">ورود</button></a>#}
-{##}
-{#    <button type="button" class="btn btn-outline-warning"><a href="{% url 'account_signup' %}"> ثبت نام</button></a>#}
-{##}
-{##}
-{#{% endif %}#}
-
 {% block content %}
 
 {% endblock %}
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

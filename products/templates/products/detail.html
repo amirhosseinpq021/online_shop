@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load comment_tags %}
 {% block title %}detail page{% endblock %}
 
 {% block content %}
@@ -128,10 +129,10 @@
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">{{ product_detail.comments.count }} نظر
+                                            <h3 class="review__title">{{ product_detail.comments.all|only_active_comment|length }} نظر
                                                 برای {{ product_detail.title }} </h3>
                                             <ul class="review__list">
-                                                {% for comment in product_detail.comments.all %}
+                                                {% for comment in product_detail.comments.all|only_active_comment %}
 
                                                     <li class="review__item">
                                                         <div class="review__container">
@@ -168,9 +169,10 @@
                                                     <div class="col-lg-8 m-auto">
                                                         <span class="reply-title pull-right">نظر خود را بنویسید</span>
                                                         <br>
-                                                        <form action="{% url 'comment_create' product_detail.pk %}" class="form text-right" method="post">
+                                                        <form action="{% url 'comment_create' product_detail.pk %}"
+                                                              class="form text-right" method="post">
                                                             {% csrf_token %}
-                                                           {{ comment_form | crispy }}
+                                                            {{ comment_form | crispy }}
                                                             <div class="form__group">
                                                                 <div class="form-row">
                                                                     <div class="col-12">
