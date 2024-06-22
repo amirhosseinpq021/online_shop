@@ -1,7 +1,9 @@
 {% extends '_base.html' %}
 {% load static %}
 {% block title %}products page{% endblock title %}
-
+{% block style_css %}
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+{% endblock %}
 {% block content %}
 
 
@@ -31,6 +33,7 @@
                             <div class="tab-content" id="product-tab-content">
                                 <div class="tab-pane fade show active" id="nav-all">
                                     <div class="row xxl-block-grid-6 grid-space-20">
+                                        <h3> جدیدترین محصولات </h3>
                                         {% for product in products %}
 
                                             <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
@@ -59,13 +62,13 @@
                                                             <div class="product-price-wrapper mb--30">
 
                                                                 {% if product.discounted_price > 1 %}
-                                                                <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
-                                                                <span class="money-separator">-</span>
-                                                                <span class="old-price text-danger">
+                                                                    <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
+                                                                    <span class="money-separator">-</span>
+                                                                    <span class="old-price text-danger">
                                                                 <span class="money text-danger">{{ product.price }}</span>
                                                             </span>
                                                                 {% else %}
-                                                                <span class="money text-success"> {{ product.price }}تومان</span>
+                                                                    <span class="money text-success"> {{ product.price }}تومان</span>
                                                                 {% endif %}
 
                                                             </div>
@@ -76,6 +79,160 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--pagination-->
+                            {#                            <nav class="pagination-wrap mt--35 mt-md--25 pb-5">#}
+                            {#                                <ul class="pagination">#}
+                            {#                                    <li><a href="#" class="next page-number"><i#}
+                            {#                                            class="fa fa-angle-double-right"></i></a></li>#}
+                            {#                                    <li><span class="current page-number">1</span></li>#}
+                            {#                                    <li><a href="#" class="page-number">2</a></li>#}
+                            {#                                    <li><a href="#" class="page-number">3</a></li>#}
+                            {#                                    <li><a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>#}
+                            {#                                    </li>#}
+                            {#                                </ul>#}
+                            {#                            </nav>#}
+                        </div>
+                    </div>
+                </div>
+                <!--sale_product-->
+                <div class="container-fluid shop-products">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tab-content" id="product-tab-content">
+                                <div class="tab-pane fade show active" id="nav-all">
+                                    <div class="row xxl-block-grid-6 grid-space-20">
+                                        <h3> پیشنهاد شگفت انگیز </h3>
+                                        {% for product in products %}
+                                            {% if product.discount > 1 %}
+
+
+                                                <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                                    <div class="ShoppingYar-product">
+                                                        <div class="product-inner">
+                                                            <figure class="product-image">
+                                                                <a href="{{ product.get_absolute_url }}">
+                                                                    <img src="{{ product.cover.url }}"
+                                                                         alt="Products">
+                                                                </a>
+                                                                <div class="ShoppingYar-product-action">
+                                                                    <div class="product-action d-flex">
+                                                                        <a href="wishlist.html" class="action-btn">
+                                                                            <i class="flaticon flaticon-like"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                {% if product.is_sale %}
+                                                                    <span class="product-badge">محصولات شگفت انگیز</span>
+                                                                {% endif %}
+                                                            </figure>
+                                                            <div class="product-info">
+                                                                <h3 class="product-title h6 mb--15">
+                                                                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                                                                </h3>
+                                                                <div class="product-price-wrapper mb--30">
+
+                                                                    {% if product.discounted_price > 1 %}
+                                                                        <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
+                                                                        <span class="money-separator">-</span>
+                                                                        <span class="old-price text-danger">
+                                                                <span class="money text-danger">{{ product.price }}</span>
+                                                            </span>
+                                                                    {% else %}
+                                                                        <span class="money text-success"> {{ product.price }}تومان</span>
+                                                                    {% endif %}
+
+                                                                </div>
+                                                                <a href="cart.html"
+                                                                   class="btn btn-small btn-bg-sand btn-color-dark px-3">اضافه
+                                                                    کردن به سبد خرید</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {#                            <!--pagination-->#}
+                            {#                            <nav class="pagination-wrap mt--35 mt-md--25 pb-5">#}
+                            {#                                <ul class="pagination">#}
+                            {#                                    <li><a href="#" class="next page-number"><i#}
+                            {#                                            class="fa fa-angle-double-right"></i></a></li>#}
+                            {#                                    <li><span class="current page-number">1</span></li>#}
+                            {#                                    <li><a href="#" class="page-number">2</a></li>#}
+                            {#                                    <li><a href="#" class="page-number">3</a></li>#}
+                            {#                                    <li><a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>#}
+                            {#                                    </li>#}
+                            {#                                </ul>#}
+                            {#                            </nav>#}
+                        </div>
+                    </div>
+                </div>
+                <!--sale_product-->
+
+                <!--sale_product-->
+                <div class="container-fluid shop-products">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tab-content" id="product-tab-content">
+                                <div class="tab-pane fade show active" id="nav-all">
+                                    <div class="row xxl-block-grid-6 grid-space-20">
+                                        <h3> منتخب محصولات تخفیف و حراج </h3>
+                                        {% for product in products %}
+                                            {% if product.is_featured %}
+
+
+                                                <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                                    <div class="ShoppingYar-product">
+                                                        <div class="product-inner">
+                                                            <figure class="product-image">
+                                                                <a href="{{ product.get_absolute_url }}">
+                                                                    <img src="{{ product.cover.url }}"
+                                                                         alt="Products">
+                                                                </a>
+                                                                <div class="ShoppingYar-product-action">
+                                                                    <div class="product-action d-flex">
+                                                                        <a href="wishlist.html" class="action-btn">
+                                                                            <i class="flaticon flaticon-like"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                {% if product.is_sale %}
+                                                                    <span class="product-badge">تخفیف ویژه</span>
+                                                                {% endif %}
+                                                            </figure>
+                                                            <div class="product-info">
+                                                                <h3 class="product-title h6 mb--15">
+                                                                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                                                                </h3>
+                                                                <div class="product-price-wrapper mb--30">
+
+                                                                    {% if product.discounted_price > 1 %}
+                                                                        <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
+                                                                        <span class="money-separator">-</span>
+                                                                        <span class="old-price text-danger">
+                                                                <span class="money text-danger">{{ product.price }}</span>
+                                                            </span>
+                                                                    {% else %}
+                                                                        <span class="money text-success"> {{ product.price }}تومان</span>
+                                                                    {% endif %}
+
+                                                                </div>
+                                                                <a href="cart.html"
+                                                                   class="btn btn-small btn-bg-sand btn-color-dark px-3">اضافه
+                                                                    کردن به سبد خرید</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -96,36 +253,90 @@
                         </div>
                     </div>
                 </div>
+                <!--sale_product-->
+
             </div>
         </div>
         <!-- Main Content Wrapper Start -->
 
         <!-- Footer Start-->
-        <footer class="footer">
-            <div class="footer-top bg-color ptb--50" data-bg-color="#f6f6f6">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-9 text-center">
-                            <div class="footer-widget mb--50">
-                                <div class="textwidget">
-                                    <img src="assets/img/codingyar_logo.png" alt="Logo">
-                                </div>
-                            </div>
-                            <div class="footer-widget mb--50 pb--1">
-                                <ul class="footer-menu">
-                                    <li><a href="">درباره ما</a></li>
-                                    <li><a href="">قوانین و مقررات</a></li>
-                                    <li><a href="">تماس با ما</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-widget">
-                                Codingyar.com © | all rights reserved
-                            </div>
-                        </div>
+        {#        <footer class="footer">#}
+        {#            <div class="footer-top bg-color ptb--50" data-bg-color="#f6f6f6">#}
+        {#                <div class="container">#}
+        {#                    <div class="row justify-content-center">#}
+        {#                        <div class="col-lg-9 text-center">#}
+        {#                            <div class="footer-widget mb--50">#}
+        {#                                <div class="textwidget">#}
+        {#                                    <img src="assets/img/codingyar_logo.png" alt="Logo">#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                            <div class="footer-widget mb--50 pb--1">#}
+        {#                                <ul class="footer-menu">#}
+        {#                                    <li><a href="">درباره ما</a></li>#}
+        {#                                    <li><a href="">قوانین و مقررات</a></li>#}
+        {#                                    <li><a href="">تماس با ما</a></li>#}
+        {#                                </ul>#}
+        {#                            </div>#}
+        {#                            <div class="footer-widget">#}
+        {#                                Codingyar.com © | all rights reserved#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </footer>#}
+
+
+        {#            <title>فوتر سایت دیجی کالا</title>#}
+
+
+        <!-- فوتر -->
+        <footer class="bg-dark text-white mt-5">
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">درباره ما</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">درباره کدینگ یار</a></li>
+                            <li><a href="#" class="text-white">تماس با ما</a></li>
+                            <li><a href="#" class="text-white">همکاری با ما</a></li>
+                        </ul>
                     </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">خدمات مشتریان</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">سوالات متداول</a></li>
+                            <li><a href="#" class="text-white">بازگرداندن کالا</a></li>
+                            <li><a href="#" class="text-white">شرایط استفاده</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">راهنما</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">راهنمای خرید</a></li>
+                            <li><a href="#" class="text-white">نحوه ارسال</a></li>
+                            <li><a href="#" class="text-white">حریم خصوصی</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">شبکه‌های اجتماعی</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">تلگرام</a></li>
+                            <li><a href="#" class="text-white">اینستاگرام</a></li>
+                            <li><a href="#" class="text-white">توییتر</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="text-center">
+                    <p>&copy; 2023 کدینگ یار . کلیه حقوق محفوظ است.</p>
                 </div>
             </div>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
         <!-- Footer End-->
 
         <!-- Search form Popup Start -->
@@ -229,7 +440,6 @@
 
 
     <!-- ************************* JS Files ************************* -->
-
 
 
     </body>

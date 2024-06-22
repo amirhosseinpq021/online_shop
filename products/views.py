@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class ProductListView(ListView):
-    queryset = Product.objects.filter(active=True)
+    queryset = Product.objects.filter(active=True).order_by('-datetime_created')[:100]
     template_name = 'products/product_list.html'
     context_object_name = 'products'
 
