@@ -56,14 +56,14 @@ class Comment(models.Model):
         ('اصلا پیشنهاد نمیکنم', 'اصلا پیشنهاد نمیکنم'),
         ('حتما پیشنهاد میکنم', 'حتما پیشنهاد میکنم'),
     ]
-    text = models.TextField()
+    text = models.TextField(verbose_name='نظر شما ')
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
     is_active = models.BooleanField(default=True)
-    stars = models.CharField(max_length=100, choices=PRODUCT_STARS, blank=True)
-    recommend = models.CharField(max_length=100, choices=RECOMMEND, blank=True)
+    stars = models.CharField(max_length=100, choices=PRODUCT_STARS, blank=True, verbose_name='امتیاز')
+    recommend = models.CharField(max_length=100, choices=RECOMMEND, blank=True, verbose_name='پیشنهادات')
 
     objects = models.Manager()
     active_comments_manager = ActivCommentManager()
