@@ -31,7 +31,6 @@ class Product(models.Model):
     vat = models.PositiveIntegerField()
     price_with_vat = models.PositiveIntegerField()
 
-
     objects = models.Manager()
     active_objects = ActiveProductManager()
 
@@ -52,7 +51,7 @@ class Product(models.Model):
     @property
     def vat(self):
         if self.is_vat:
-            return (self.sales_amount_after_discount * 9 ) / 100
+            return (self.sales_amount_after_discount * 9) / 100
 
     @property
     def sales_amount_after_discount(self):
@@ -62,10 +61,6 @@ class Product(models.Model):
     def price_with_vat(self):
         if self.is_vat:
             return (self.sales_amount_after_discount) + (self.vat)
-
-
-
-
 
 
 class ActivCommentManager(models.Manager):

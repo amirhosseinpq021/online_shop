@@ -9,13 +9,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-25 14:40+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2024-06-25 19:13+0330\n"
+"Last-Translator:   <dezhamkhah@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: .\models.py:13
 msgid "product name"
@@ -43,7 +44,7 @@ msgstr "حراج"
 
 #: .\models.py:19
 msgid "cover"
-msgstr "عکس"
+msgstr "عکس محصول"
 
 #: .\models.py:20
 msgid "datetime_created"
@@ -63,7 +64,7 @@ msgstr "مبلغ تخفیف"
 
 #: .\models.py:26
 msgid "The amount of discount"
-msgstr "مبلغ تخفیف"
+msgstr "مبلغ تخفیف "
 
 #: .\models.py:27
 msgid "Final price after deduction of discounts"

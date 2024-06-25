@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     # allauth
     'allauth',
     'allauth.account',
+
+    # rosetta
+    'rosetta',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +146,10 @@ EMAIL_USE_TLS = True
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fa'
-
+LANGUAGES = (
+    ('en', 'English'),
+    ('fa', 'Persian')
+)
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tehran'
 
@@ -185,3 +191,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOCALE_PATHS = (
+    'templates/locale',
+)
