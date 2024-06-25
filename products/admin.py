@@ -20,13 +20,14 @@ class ProductsAdmin(admin.ModelAdmin):
     thumbnail.short_description = 'photo'
 
     list_display = ('title', 'price', 'active', 'is_featured', 'is_sale', 'thumbnail', 'datetime_created', 'discount',
-                    'discounted_price',  'the_amount_of_discount', 'sales_amount_after_discount', 'all_discount')
+                    'discounted_price', 'the_amount_of_discount', 'sales_amount_after_discount', 'all_discount',
+                    'is_vat', 'vat', 'sales_amount_after_discount', 'price_with_vat')
 
     search_fields = ('id', 'title', 'is_featured', 'is_sale', 'discount',
                      'discounted_price', 'the_amount_of_discount', 'sales_amount_after_discount')
 
-    list_editable = ('is_featured', 'is_sale', 'active', 'discount', 'the_amount_of_discount',
-                     )
+    list_editable = ('price', 'is_featured', 'is_sale', 'active', 'discount', 'the_amount_of_discount',
+                     'is_vat',)
 
     inlines = [
         ProductCommentInline,
@@ -42,13 +43,5 @@ class CommentAdmin(admin.ModelAdmin):
                      )
 
 
-
-
-
-
-
-
-
 admin.site.register(Product, ProductsAdmin)
 admin.site.register(Comment, CommentAdmin)
-

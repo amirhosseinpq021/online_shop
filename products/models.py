@@ -27,6 +27,10 @@ class Product(models.Model):
     sales_amount_after_discount = models.PositiveIntegerField(null=True, verbose_name=_('Final price after deduction '
                                                                                         'of discounts'))
     all_discount = models.PositiveIntegerField(verbose_name=_('Total discounts'))
+    is_vat = models.BooleanField(default=False)
+    vat = models.PositiveIntegerField()
+    price_with_vat = models.PositiveIntegerField()
+
 
     objects = models.Manager()
     active_objects = ActiveProductManager()
@@ -42,12 +46,26 @@ class Product(models.Model):
         return ((self.price) * (self.discount)) / 100
 
     @property
-    def sales_amount_after_discount(self):
-        return (self.price) - (self.the_amount_of_discount + self.discounted_price)
-
-    @property
     def all_discount(self):
         return (self.the_amount_of_discount + self.discounted_price)
+
+    @property
+    def vat(self):
+        if self.is_vat:
+            return (self.sales_amount_after_discount * 9 ) / 100
+
+    @property
+    def sales_amount_after_discount(self):
+        return (self.price) - (self.all_discount)
+
+    @property
+    def price_with_vat(self):
+        if self.is_vat:
+            return (self.sales_amount_after_discount) + (self.vat)
+
+
+
+
 
 
 class ActivCommentManager(models.Manager):

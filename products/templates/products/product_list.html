@@ -138,7 +138,7 @@
                                                                 <div class="product-price-wrapper mb--30">
 
                                                                {% if product.discounted_price > 1 or product.the_amount_of_discount  %}
-                                                                        <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
+                                                                        <span class="money text-success"> {{ product.sales_amount_after_discount | floatformat:"0" }}تومان</span>
                                                                         <span class="money-separator">-</span>
                                                                         <span class="old-price text-danger">
                                                                 <span class="money text-danger">{{ product.price }}</span>
@@ -216,7 +216,7 @@
                                                                 <div class="product-price-wrapper mb--30">
 
                                                                     {% if product.discounted_price > 1 or product.the_amount_of_discount  %}
-                                                                        <span class="money text-success"> {{ product.sell_price | floatformat:"0" }}تومان</span>
+                                                                        <span class="money text-success"> {{ product.sales_amount_after_discount | floatformat:"0" }}تومان</span>
                                                                         <span class="money-separator">-</span>
                                                                         <span class="old-price text-danger">
                                                                 <span class="money text-danger">{{ product.price }}</span>
