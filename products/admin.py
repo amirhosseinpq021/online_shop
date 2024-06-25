@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from .models import Product, Comment
 
@@ -13,8 +14,13 @@ class ProductCommentInline(admin.TabularInline):
 
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'active', 'is_featured', 'is_sale', 'cover', 'datetime_created', 'discount',
-                    'discounted_price', 'sell_price')
+    def thumbnail(self, object):
+        return format_html('<img src="{}" width="100" style="border-radius:50px" />'.format(object.cover.url))
+
+    thumbnail.short_description = 'photo'
+
+    list_display = ('title', 'price', 'active', 'is_featured', 'is_sale', 'thumbnail', 'datetime_created', 'discount',
+                    'discounted_price', 'sell_price',)
 
     search_fields = ('id', 'title', 'is_featured', 'is_sale', 'discount',
                      'discounted_price', 'sell_price')
