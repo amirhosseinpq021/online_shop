@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-25 12:57+0330\n"
+"POT-Creation-Date: 2024-06-25 14:40+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,67 +17,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\models.py:12
+#: .\models.py:13
 msgid "product name"
 msgstr "نام کالا"
 
-#: .\models.py:13
+#: .\models.py:14
 msgid "description product "
 msgstr "توضیحات کالا"
 
-#: .\models.py:14
+#: .\models.py:15
 msgid "price"
 msgstr "قیمت"
 
-#: .\models.py:15
+#: .\models.py:16
 msgid "active"
 msgstr "فعال"
 
-#: .\models.py:16
+#: .\models.py:17
 msgid "is_featured"
 msgstr "ویژه"
 
-#: .\models.py:17
+#: .\models.py:18
 msgid "is_sale"
 msgstr "حراج"
 
-#: .\models.py:18
+#: .\models.py:19
 msgid "cover"
 msgstr "عکس"
 
-#: .\models.py:19
+#: .\models.py:20
 msgid "datetime_created"
 msgstr "تاریخ ایجاد"
 
-#: .\models.py:20
+#: .\models.py:21
 msgid "datetime_modified"
 msgstr "تاریخ تغییر"
 
-#: .\models.py:22
+#: .\models.py:23
 msgid "discount percent"
 msgstr "درصد تخفیف"
 
-#: .\models.py:23
+#: .\models.py:24
 msgid "discounted price"
 msgstr "مبلغ تخفیف"
 
-#: .\models.py:24
-msgid "sell price product"
-msgstr "مبلغ فروش نهایی "
+#: .\models.py:26
+msgid "The amount of discount"
+msgstr "مبلغ تخفیف"
 
-#: .\models.py:59
+#: .\models.py:27
+msgid "Final price after deduction of discounts"
+msgstr "قیمت نهایی بعد از کسر تخفیفات"
+
+#: .\models.py:29
+msgid "Total discounts"
+msgstr "جمع تخفیفات"
+
+#: .\models.py:68
 msgid "comment text"
 msgstr "متن نظر"
 
-#: .\models.py:62
+#: .\models.py:71
 msgid "comment"
 msgstr "نظر"
 
-#: .\models.py:65
+#: .\models.py:74
 msgid "stars"
 msgstr "امتیاز"
 
-#: .\models.py:66
+#: .\models.py:75
 msgid "recommend"
 msgstr "پیشنهادات"
 
@@ -85,22 +93,22 @@ msgstr "پیشنهادات"
 msgid "product deatail"
 msgstr "اطلاعات محصول"
 
-#: .\templates\products\detail.html:66
+#: .\templates\products\detail.html:68
 msgid "add to card"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\detail.html:70
+#: .\templates\products\detail.html:72
 msgid "categories"
 msgstr "دسته بندی ها "
 
-#: .\templates\products\detail.html:86
+#: .\templates\products\detail.html:88
 msgid "product descriptions"
 msgstr "اطلاعات محصول"
 
-#: .\templates\products\detail.html:171
+#: .\templates\products\detail.html:173
 msgid "write your comment"
 msgstr "نظر خود را بنویسید"
 
-#: .\templates\products\detail.html:180
+#: .\templates\products\detail.html:182
 msgid "submit"
 msgstr "ارسال"

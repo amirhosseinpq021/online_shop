@@ -23,10 +23,11 @@ class Product(models.Model):
     discount = models.PositiveIntegerField(verbose_name=_('discount percent'))
     discounted_price = models.PositiveIntegerField(null=True, verbose_name=_('discounted price'))
 
-    the_amount_of_discount = models.PositiveIntegerField()
-    sales_amount_after_discount = models.PositiveIntegerField(null=True)
+    the_amount_of_discount = models.PositiveIntegerField(verbose_name=_('The amount of discount'))
+    sales_amount_after_discount = models.PositiveIntegerField(null=True, verbose_name=_('Final price after deduction '
+                                                                                        'of discounts'))
+    all_discount = models.PositiveIntegerField(verbose_name=_('Total discounts'))
 
-    all_discount = models.PositiveIntegerField()
     objects = models.Manager()
     active_objects = ActiveProductManager()
 
@@ -39,7 +40,6 @@ class Product(models.Model):
     @property
     def discounted_price(self):
         return ((self.price) * (self.discount)) / 100
-
 
     @property
     def sales_amount_after_discount(self):
