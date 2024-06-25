@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.shortcuts import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 class ActiveProductManager(models.Manager):
@@ -9,19 +10,20 @@ class ActiveProductManager(models.Manager):
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    price = models.PositiveIntegerField(default=0)
-    active = models.BooleanField(default=True)
-    is_featured = models.BooleanField(default=False)
-    is_sale = models.BooleanField(default=False)
-    cover = models.ImageField(upload_to='cover/')
-    datetime_created = models.DateTimeField(auto_now_add=True)
-    datetime_modified = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=200, verbose_name=_('product name'))
+    description = models.TextField(verbose_name=_('description product '))
+    price = models.PositiveIntegerField(default=0, verbose_name=_('price'))
+    active = models.BooleanField(default=True, verbose_name=_('active'))
+    is_featured = models.BooleanField(default=False, verbose_name=_('is_featured'))
+    is_sale = models.BooleanField(default=False, verbose_name=_('is_sale'))
+    cover = models.ImageField(upload_to='cover/', verbose_name=_('cover'))
+    datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('datetime_created'))
+    datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('datetime_modified'))
 
-    discount = models.PositiveIntegerField()
-    discounted_price = models.PositiveIntegerField(null=True)
-    sell_price = models.PositiveIntegerField(null=True)
+    discount = models.PositiveIntegerField(verbose_name=_('discount percent'))
+    discounted_price = models.PositiveIntegerField(null=True, verbose_name=_('discounted price'))
+    sell_price = models.PositiveIntegerField(null=True, verbose_name=_('sell price product'))
+    
 
     objects = models.Manager()
     active_objects = ActiveProductManager()
@@ -56,14 +58,14 @@ class Comment(models.Model):
         ('اصلا پیشنهاد نمیکنم', 'اصلا پیشنهاد نمیکنم'),
         ('حتما پیشنهاد میکنم', 'حتما پیشنهاد میکنم'),
     ]
-    text = models.TextField(verbose_name='نظر شما ')
+    text = models.TextField(verbose_name=_('comment text'))
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name=_('comment'))
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
     is_active = models.BooleanField(default=True)
-    stars = models.CharField(max_length=100, choices=PRODUCT_STARS, blank=True, verbose_name='امتیاز')
-    recommend = models.CharField(max_length=100, choices=RECOMMEND, blank=True, verbose_name='پیشنهادات')
+    stars = models.CharField(max_length=100, choices=PRODUCT_STARS, blank=True, verbose_name=_('stars'))
+    recommend = models.CharField(max_length=100, choices=RECOMMEND, blank=True, verbose_name=_('recommend'))
 
     objects = models.Manager()
     active_comments_manager = ActivCommentManager()
@@ -73,7 +75,3 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.product.id])
-
-
-
-

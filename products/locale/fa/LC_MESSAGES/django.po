@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-25 12:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\models.py:12
+msgid "product name"
+msgstr "نام کالا"
+
+#: .\models.py:13
+msgid "description product "
+msgstr "توضیحات کالا"
+
+#: .\models.py:14
+msgid "price"
+msgstr "قیمت"
+
+#: .\models.py:15
+msgid "active"
+msgstr "فعال"
+
+#: .\models.py:16
+msgid "is_featured"
+msgstr "ویژه"
+
+#: .\models.py:17
+msgid "is_sale"
+msgstr "حراج"
+
+#: .\models.py:18
+msgid "cover"
+msgstr "عکس"
+
+#: .\models.py:19
+msgid "datetime_created"
+msgstr "تاریخ ایجاد"
+
+#: .\models.py:20
+msgid "datetime_modified"
+msgstr "تاریخ تغییر"
+
+#: .\models.py:22
+msgid "discount percent"
+msgstr "درصد تخفیف"
+
+#: .\models.py:23
+msgid "discounted price"
+msgstr "مبلغ تخفیف"
+
+#: .\models.py:24
+msgid "sell price product"
+msgstr "مبلغ فروش نهایی "
+
+#: .\models.py:59
+msgid "comment text"
+msgstr "متن نظر"
+
+#: .\models.py:62
+msgid "comment"
+msgstr "نظر"
+
+#: .\models.py:65
+msgid "stars"
+msgstr "امتیاز"
+
+#: .\models.py:66
+msgid "recommend"
+msgstr "پیشنهادات"
+
+#: .\templates\products\detail.html:19
+msgid "product deatail"
+msgstr "اطلاعات محصول"
+
+#: .\templates\products\detail.html:66
+msgid "add to card"
+msgstr "اضافه کردن به سبد خرید"
+
+#: .\templates\products\detail.html:70
+msgid "categories"
+msgstr "دسته بندی ها "
+
+#: .\templates\products\detail.html:86
+msgid "product descriptions"
+msgstr "اطلاعات محصول"
+
+#: .\templates\products\detail.html:171
+msgid "write your comment"
+msgstr "نظر خود را بنویسید"
+
+#: .\templates\products\detail.html:180
+msgid "submit"
+msgstr "ارسال"
