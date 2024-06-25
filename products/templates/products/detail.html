@@ -43,13 +43,15 @@
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
 
-                                    {% if product_detail.discount > 1 %}
-                                        <span class="money text-success">{{ product_detail.sell_price| floatformat:"0" }}</span>
+                                    {% if product_detail.discounted_price > 1 or product_detail.the_amount_of_discount  %}
+                                        <span class="money text-success">{{ product_detail.sales_amount_after_discount| floatformat:"0" }}</span>
                                         <span class="price-separator">-</span>
                                         <span class="money old-price text-danger">{{ product_detail.price| floatformat:"0" }}</span>
                                     {% else %}
                                         <span class="money text-success">{{ product_detail.price }}</span>
                                     {% endif %}
+                                    <br>
+                                    <h1>{{ product_detail.all_discount| floatformat:"0" }}تخفیف</h1>
 
                                 </div>
 
