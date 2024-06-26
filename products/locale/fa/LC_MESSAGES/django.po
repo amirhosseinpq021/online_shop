@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-25 14:40+0330\n"
-"PO-Revision-Date: 2024-06-25 19:13+0330\n"
+"POT-Creation-Date: 2024-06-26 10:40+0330\n"
+"PO-Revision-Date: 2024-06-25 19:35+0330\n"
 "Last-Translator:   <dezhamkhah@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,75 +18,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: .\models.py:13
+#: .\models.py:15
 msgid "product name"
 msgstr "نام کالا"
 
-#: .\models.py:14
+#: .\models.py:16
 msgid "description product "
 msgstr "توضیحات کالا"
 
-#: .\models.py:15
+#: .\models.py:17
 msgid "price"
 msgstr "قیمت"
 
-#: .\models.py:16
+#: .\models.py:18
 msgid "active"
 msgstr "فعال"
 
-#: .\models.py:17
+#: .\models.py:19
 msgid "is_featured"
 msgstr "ویژه"
 
-#: .\models.py:18
+#: .\models.py:20
 msgid "is_sale"
 msgstr "حراج"
 
-#: .\models.py:19
+#: .\models.py:21
 msgid "cover"
 msgstr "عکس محصول"
 
-#: .\models.py:20
+#: .\models.py:22
 msgid "datetime_created"
 msgstr "تاریخ ایجاد"
 
-#: .\models.py:21
+#: .\models.py:23
 msgid "datetime_modified"
 msgstr "تاریخ تغییر"
 
-#: .\models.py:23
+#: .\models.py:25
 msgid "discount percent"
 msgstr "درصد تخفیف"
 
-#: .\models.py:24
+#: .\models.py:26
 msgid "discounted price"
 msgstr "مبلغ تخفیف"
 
-#: .\models.py:26
+#: .\models.py:28
 msgid "The amount of discount"
 msgstr "مبلغ تخفیف "
 
-#: .\models.py:27
+#: .\models.py:29
 msgid "Final price after deduction of discounts"
 msgstr "قیمت نهایی بعد از کسر تخفیفات"
 
-#: .\models.py:29
+#: .\models.py:31
 msgid "Total discounts"
 msgstr "جمع تخفیفات"
 
-#: .\models.py:68
+#: .\models.py:32
+msgid "Including value added"
+msgstr "مشموا ارزش افزوده"
+
+#: .\models.py:33
+msgid "Amount of added value"
+msgstr "مبلغ ارزش افزوده"
+
+#: .\models.py:34
+msgid "The final price"
+msgstr "قیمت نهایی با ارزش افزوده"
+
+#: .\models.py:83
 msgid "comment text"
 msgstr "متن نظر"
 
-#: .\models.py:71
+#: .\models.py:86
 msgid "comment"
 msgstr "نظر"
 
-#: .\models.py:74
+#: .\models.py:89
 msgid "stars"
 msgstr "امتیاز"
 
-#: .\models.py:75
+#: .\models.py:90
 msgid "recommend"
 msgstr "پیشنهادات"
 

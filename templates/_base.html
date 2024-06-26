@@ -138,6 +138,16 @@
     </div>
 </header>
 
+<!--messages-->
+{% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-primary" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 
 {% block content %}

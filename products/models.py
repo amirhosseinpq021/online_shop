@@ -27,9 +27,9 @@ class Product(models.Model):
     sales_amount_after_discount = models.PositiveIntegerField(null=True, verbose_name=_('Final price after deduction '
                                                                                         'of discounts'))
     all_discount = models.PositiveIntegerField(verbose_name=_('Total discounts'))
-    is_vat = models.BooleanField(default=False)
-    vat = models.PositiveIntegerField()
-    price_with_vat = models.PositiveIntegerField()
+    is_vat = models.BooleanField(default=False, verbose_name=_('Including value added'))
+    vat = models.PositiveIntegerField(verbose_name=_('Amount of added value'))
+    price_with_vat = models.PositiveIntegerField(verbose_name=_('The final price'))
 
     objects = models.Manager()
     active_objects = ActiveProductManager()

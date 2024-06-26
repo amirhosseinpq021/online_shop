@@ -5,6 +5,7 @@ from .forms import CommentForm
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProductListView(ListView):
@@ -29,9 +30,10 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
         return super().form_valid(form)
 
 
-class CommentCreateView(LoginRequiredMixin, CreateView):
+class CommentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Comment
     form_class = CommentForm
+    success_message = "نظر شما با موفقیت ثبت شد"
 
     def form_valid(self, form):  # new
 
