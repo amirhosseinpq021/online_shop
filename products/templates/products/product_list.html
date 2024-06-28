@@ -35,7 +35,7 @@
                                 <div class="tab-pane fade show active" id="nav-all">
                                     <div class="row xxl-block-grid-6 grid-space-20">
                                         <h3> جدیدترین محصولات </h3>
-                                        {% for product in products|sort_product_latest_show %}
+                                        {% for product in products %}
 
                                             <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
                                                 <div class="ShoppingYar-product">
@@ -73,7 +73,7 @@
                                                                 {% endif %}
 
                                                             </div>
-                                                            <a href="cart.html"
+                                                            <a href="{% url 'cart:cart_add' product.id %}"
                                                                class="btn btn-small btn-bg-sand btn-color-dark px-3">اضافه
                                                                 کردن به سبد خرید</a>
                                                         </div>

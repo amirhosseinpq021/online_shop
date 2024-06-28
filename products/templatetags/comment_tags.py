@@ -20,4 +20,4 @@ def sort_product_latest(product):
 
 @register.filter
 def sort_product_latest_show(product):
-    return product.order_by('-datetime_created').filter(is_sale=False)
+    return product.order_by('-datetime_created')

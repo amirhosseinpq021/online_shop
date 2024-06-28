@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load crispy_forms_filters %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% load comment_tags %}
@@ -43,7 +44,7 @@
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
 
-                                    {% if product_detail.discounted_price > 1 or product_detail.the_amount_of_discount  %}
+                                    {% if product_detail.discounted_price > 1 or product_detail.the_amount_of_discount %}
                                         <span class="money text-success">{{ product_detail.sales_amount_after_discount| floatformat:"0" }}</span>
                                         <span class="price-separator">-</span>
                                         <span class="money old-price text-danger">{{ product_detail.price| floatformat:"0" }}</span>
@@ -57,16 +58,27 @@
 
 
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                    <div class="quantity-wrapper d-flex justify-content-start">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                                   min="1">
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                            onclick="window.location.href='cart.html'">
-                                        {% trans 'add to card' %}
-                                    </button>
+                                    <form action="{% url 'cart:cart_add' product_detail.id %}" method="post">
+                                        {% csrf_token %}
+                                        {{ add_to_cart_form | crispy }}
+
+                                        <button type="submit"
+                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
+                                                onclick="window.location.href='cart.html'">
+                                            {% trans 'add to card' %}
+                                        </button>
+
+                                    </form>
+                                    {#                                    <div class="quantity-wrapper d-flex justify-content-start">#}
+                                    {#                                        <div class="quantity">#}
+                                    {#                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1"#}
+                                    {#                                                   min="1">#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <button type="submit" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"#}
+                                    {#                                            onclick="window.location.href='cart.html'">#}
+                                    {#                                        {% trans 'add to card' %}#}
+                                    {#                                    </button>#}
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
                                     <p><span class="m-0">{% trans 'categories' %}</span>
@@ -132,7 +144,8 @@
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">{{ product_detail.comments.all|only_active_comment|length }} نظر
+                                            <h3 class="review__title">{{ product_detail.comments.all|only_active_comment|length }}
+                                                نظر
                                                 برای {{ product_detail.title }} </h3>
                                             <ul class="review__list">
                                                 {% for comment in product_detail.comments.all|only_active_comment %}
@@ -179,7 +192,8 @@
                                                             <div class="form__group">
                                                                 <div class="form-row">
                                                                     <div class="col-12">
-                                                                        <input type="submit" value="{% trans 'submit' %}"
+                                                                        <input type="submit"
+                                                                               value="{% trans 'submit' %}"
                                                                                class="btn-submit">
                                                                     </div>
                                                                 </div>
